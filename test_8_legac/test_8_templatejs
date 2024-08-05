@@ -1,0 +1,20 @@
+let result = document.getElementById("result");
+
+document
+  .getElementById("calculateButton")
+  .addEventListener("click", function () {
+    // 폼에서 키와 몸무게 값을 가져오기
+    const height = document.getElementById("height").value;
+    const weight = document.getElementById("weight").value;
+
+    // BMI 계산
+
+    // 결과 변수 선언
+
+    // BMI에 따라 체중 상태를 결정
+
+    // 추가 설명을 제공
+
+    // 결과 출력
+    result.innerHTML = `당신의 BMI지수는 <bmi>입니다. 비만도 결과는 <span><결과 메시지></span> 입니다. <추가설명>`;
+  });

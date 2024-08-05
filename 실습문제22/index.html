@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manipulation Example</title>
+    <style>
+      /* 전체 문서의 배경색 설정 */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+      }
+
+      /* 제목 스타일링 */
+      h1 {
+        color: #333;
+        text-align: center;
+      }
+
+      /* 아이템 리스트 스타일링 */
+      #itemList {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #itemList li {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 버튼 스타일링 */
+      #addItemButton {
+        display: block;
+        width: 100px;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      #addItemButton:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DOM 조작 예제</h1>
+    <ul id="itemList"></ul>
+    <button id="addItemButton">아이템 추가</button>
+
+    <script>
+      let num = 0;
+      var button = document.getElementById("addItemButton");
+      var deleteBtn;
+      button.addEventListener("click", function () {
+        num++;
+        var newItem = document.createElement("li");
+        newItem.innerHTML = `<div>새로운 아이템 ${num}</div>`;
+        document.getElementById("itemList").appendChild(newItem);
+        deleteBtn = document.querySelector(".delete");
+      });
+      deleteBtn.addEventListener("click", (e) => {
+        console.log(e.target);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생 성적표</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta3/css/bootstrap.min.css"
+      rel="stylesheet" 
+    />
+    <style>
+      .container {
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center">학생 성적 입력</h2>
+      <button type="button" class="btn btn-primary" id="generateBtn">
+        성적표 생성
+      </button>
+
+      <h2 class="text-center mt-5">성적표</h2>
+      <div id="reportCards" class="mt-3"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      document.getElementById("generateBtn").onclick = function () {
+        var students = [];
+        var numOfStudents = prompt("학생 수를 입력하세요:");
+
+        if (isNaN(numOfStudents) || numOfStudents <= 0) {
+          alert("학생 수는 양의 정수로 입력해야 합니다.");
+          return;
+        }
+
+        for (var i = 0; i < numOfStudents; i++) {
+          var student = {};
+          student.name = prompt(
+            "학생 이름을 입력하세요 (학생 " + (i + 1) + "):"
+          );
+          student.math = prompt(student.name + "의 수학 점수를 입력하세요:");
+          student.english = prompt(student.name + "의 영어 점수를 입력하세요:");
+          student.science = prompt(student.name + "의 과학 점수를 입력하세요:");
+
+          if (
+            isNaN(student.math) ||
+            student.math === "" ||
+            isNaN(student.english) ||
+            student.english === "" ||
+            isNaN(student.science) ||
+            student.science === ""
+          ) {
+            alert("모든 점수는 숫자로 입력해야 합니다.");
+            return;
+          }
+
+          students.push(student);
+        }
+
+        var reportCards = document.getElementById("reportCards");
+        reportCards.innerHTML = "";
+
+        for (var j = 0; j < students.length; j++) {
+          var student = students[j];
+          reportCards.innerHTML += `
+          <div class="card mb-3">
+            <div class="card-header">
+              성적표
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">${student.name}의 성적표</h5>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>과목</th>
+                    <th>점수</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>수학</td>
+                    <td>${student.math}</td>
+                  </tr>
+                  <tr>
+                    <td>영어</td>
+                    <td>${student.english}</td>
+                  </tr>
+                  <tr>
+                    <td>과학</td>
+                    <td>${student.science}</td>
+                  </tr>
+                  <tr>
+                    <td>평균 점수</td>
+                    <td>${(
+                      (parseInt(student.math) +
+                        parseInt(student.english) +
+                        parseInt(student.science)) /
+                      3
+                    ).toFixed(2)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+        }
+      };
+    </script>
+  </body>
+</html>

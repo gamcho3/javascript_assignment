@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      .container {
+        background: #fff;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .profile-section,
+      .about-section {
+        padding: 20px;
+      }
+
+      .profile-section {
+        height: 40%;
+        background: #fff;
+        text-align: center;
+        display: flex;
+
+        justify-content: center;
+      }
+
+      .about-section {
+        background: #f0f4f8;
+        height: 60%;
+        display: flex;
+
+        justify-content: center;
+      }
+
+      .about-section div {
+        text-align: center;
+      }
+
+      .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+
+      .profile-section h1 {
+        margin: 0;
+        font-size: 1.2em;
+      }
+
+      .profile-section p {
+        margin: 10px 0;
+        color: #333;
+      }
+
+      .email-button,
+      .resume-button,
+      .portfolio-button {
+        background: #000;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px 0;
+        cursor: pointer;
+        font-size: 1em;
+      }
+
+      .social-media {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .social-link {
+        color: #333;
+        font-size: 1.5em;
+        text-decoration: none;
+      }
+
+      .social-link:hover {
+        color: #0073b1; /* Change this color for hover effect */
+      }
+
+      .about-section h2 {
+        margin: 0;
+        font-size: 1.2em;
+        text-align: center;
+      }
+
+      .about-section p {
+        margin: 20px 0;
+        color: #333;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="profile-section">
+        <div>
+          <!-- 프로필 이미지 -->
+          <img src="profile.jpg" alt="Profile Picture" class="profile-img" />
+
+          <h1>
+            <!-- 이름 -->
+          </h1>
+
+          <p>
+            <!-- 직업 -->
+          </p>
+
+          <!-- 아이콘 사용하여 소셜미디어 링크 추가 -->
+          <div class="social-media"></div>
+        </div>
+      </div>
+      <div class="about-section">
+        <div>
+          <h2>ABOUT ME</h2>
+          <p>
+            <!-- 내 소개 추가 -->
+          </p>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

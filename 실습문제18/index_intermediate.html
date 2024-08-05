@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>콜라자판기2</title>
+  </head>
+  <script>
+    /**
+     * 1. 콜라 자판기
+     * - 콜라 객체를 만들어주세요.
+     * - 콜라 객체는 이름, 가격, 재고를 가지고 있습니다.
+     * - 콜라를 구매하는 buyCola 함수를 만들어주세요.
+     * - buyCola 함수는 cost를 매개변수로 받습니다.
+     * - 재고가 없을 경우 "재고가 부족합니다."를 경고창으로 띄워주세요. (alert함수 사용하기)
+     * - 가격보다 돈이 적을 경우 "돈이 부족합니다."를 경고창으로 띄워주세요.
+     * - 구매가 성공할 경우 "콜라를 구매하셨습니다. 거스름돈은 ?원 입니다."를 경고창으로 띄워주세요.
+     * - 구매가 성공할 경우 콜라의 재고를 하나 줄여주세요.
+     *
+     */
+
+    const vendingMachine = {
+      drinks: [
+        {
+          name: "콜라",
+          price: 1000,
+          stock: 5,
+        },
+        {
+          name: "사이다",
+          price: 1200,
+          stock: 3,
+        },
+        {
+          name: "환타",
+          price: 1500,
+          stock: 2,
+        },
+      ],
+      buyDrink: function (drinkName, cost) {
+        for (item of this.drinks) {
+          if (item.name === drinkName) {
+            if (item.stock === 0) {
+              alert("재고가 부족합니다.");
+              return;
+            }
+            if (cost < item.price) {
+              alert("돈이 부족합니다.");
+              return;
+            }
+            item.stock--;
+            alert(
+              `${item.name}를 구매하셨습니다. 거스름돈은 ${
+                cost - item.price
+              }원 입니다.`
+            );
+            return;
+          }
+        }
+      },
+    };
+
+    const buyCola = () => {
+      const cost = Number(prompt("돈을 넣어주세요."));
+      vendingMachine.buyDrink("콜라", cost);
+    };
+
+    const buyCider = () => {
+      const cost = Number(prompt("돈을 넣어주세요."));
+      vendingMachine.buyDrink("사이다", cost);
+    };
+
+    const buyFanta = () => {
+      const cost = Number(prompt("돈을 넣어주세요."));
+      vendingMachine.buyDrink("환타", cost);
+    };
+
+    const checkStock = () => {
+      let drinks = "";
+      let stocks = "";
+      for (item of vendingMachine.drinks) {
+        drinks += `${item.name} `;
+        stocks += `${item.stock}개 `;
+      }
+      alert(`음료수 : ${drinks}, 재고 : ${stocks}`);
+    };
+  </script>
+  <body>
+    <button type="button" onclick="buyCola()">콜라 뽑기</button>
+    <button type="button" onclick="buyCider()">사이다 뽑기</button>
+    <button type="button" onclick="buyFanta()">환타 뽑기</button>
+    <button type="button" onclick="checkStock()">재고확인</button>
+  </body>
+</html>

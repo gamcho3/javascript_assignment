@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>콜라자판기2</title>
+  </head>
+  <script>
+    /**
+     * 1. 콜라 자판기
+     * - 콜라 객체를 만들어주세요.
+     * - 콜라 객체는 이름, 가격, 재고를 가지고 있습니다.
+     * - 콜라를 구매하는 buyCola 함수를 만들어주세요.
+     * - buyCola 함수는 cost를 매개변수로 받습니다.
+     * - 재고가 없을 경우 "재고가 부족합니다."를 경고창으로 띄워주세요. (alert함수 사용하기)
+     * - 가격보다 돈이 적을 경우 "돈이 부족합니다."를 경고창으로 띄워주세요.
+     * - 구매가 성공할 경우 "콜라를 구매하셨습니다. 거스름돈은 ?원 입니다."를 경고창으로 띄워주세요.
+     * - 구매가 성공할 경우 콜라의 재고를 하나 줄여주세요.
+     * - 심화 : vendingMachine객체를 만들어서 drinks 배열에 음료수 객체들을 넣고 buyDrink 메소드를 만들어주세요.
+     * - buyDrink 메소드는 음료수 이름과 cost를 매개변수로 받습니다.
+     * - 음료수의 재고확인 버튼을 만들어주세요.
+     */
+
+    const cola = {
+      name: "콜라",
+      price: 1000,
+      stock: 5,
+    };
+
+    function buyCola(cost) {
+      if (cola.stock === 0) {
+        alert("재고가 부족합니다.");
+        return;
+      }
+      if (cost < cola.price) {
+        alert("돈이 부족합니다.");
+        return;
+      }
+      cola.stock--;
+
+      alert(
+        `${cola.name}를 구매하셨습니다. 거스름돈은 ${
+          cost - cola.price
+        }원 입니다.`
+      );
+    }
+  </script>
+  <body>
+    <button type="button" onclick="buyCola(500)">콜라 뽑기</button>
+  </body>
+</html>
