@@ -9,7 +9,7 @@
 
 1. id : `#textContent` 인 p태그에 클래스 `highlight`,`blue`를 적용하세요.
 2. id : `#textContent` 인 p태그가 화면에 보이도록 만드세요.
-3. id : `#textContent` 인 p태그에 `highlight`태그가 있는지 확인하고 콘솔에 `true`를 띄우세요
+3. id : `#textContent` 인 p태그에 `highlight`클래스가 있는지 확인하고 콘솔에 `true`를 띄우세요
 
 ## 세번째
 
