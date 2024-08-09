@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 폼</title>
+   
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function () {
+        //약관보기 이벤트
+        //마우스를 올렸을때 이벤트 실행
+        $("#infoAction").hover(function () {
+          console.log("hover");
+
+          $("#info").toggleClass("hidden");
+        });
+
+        //비밀번호 확인 검사
+        //선택자의 포커스가 사라질때 이벤트 실행
+        $("#password2").blur(function () {
+          const password = $("#password").val();
+          const password2 = $("#password2").val();
+
+          if (password !== password2) {
+            $("#password2").next().text("비밀번호가 일치하지 않습니다.");
+          } else {
+            $("#password2").next().text("");
+          }
+        });
+
+        //제출 유효성 검사
+        // 데이터 정보를 특정서버에 제출하는 이벤트
+        $("#registerForm").submit(function (e) {
+          console.log("click");
+          // 특정 이벤트를 막는 메서드
+          e.preventDefault();
+
+          const username = $("#username").val();
+          const email = $("#email").val();
+          const password = $("#password").val();
+          const password2 = $("#password2").val();
+
+          //성별선택 라디오 버튼 값 가져오기
+          const gender = $("#registerForm input[name='checkGender']:checked")
+            .next()
+            .text();
+
+            // 약관동의 체크 유무
+          const agree = $("#agree").is(":checked");
+
+          if (!username) {
+            $("#username").next().text("사용자 이름을 입력해주세요.");
+          } else {
+            $("#username").next().text("");
+          }
+
+          if (!email) {
+            $("#email").next().text("이메일을 입력해주세요.");
+          } else {
+            $("#email").next().text("");
+          }
+
+          if (!password) {
+            $("#password").next().text("비밀번호를 입력해주세요.");
+          } else {
+            $("#password").next().text("");
+          }
+
+          if (password !== password2) {
+            $("#password2").next().text("비밀번호가 일치하지 않습니다.");
+          } else {
+            $("#password2").next().text("");
+          }
+
+          if (!agree) {
+            alert("약관에 동의해주세요.");
+          }
+
+          if (
+            !username ||
+            !email ||
+            !password ||
+            password !== password2 ||
+            !agree
+          ) {
+            return;
+          } else {
+            $("#confirmUsername").text(username);
+            $("#confirmEmail").text(email);
+            $("#confirmPassword").text(password);
+            $("#confirmGender").text(gender);
+          }
+        });
+      });
+    </script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .signup-form {
+        width: 100%;
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .signup-form h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      #infoAction {
+        display: block;
+        margin: 10px 0;
+        color: #007bff;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      #info {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      #info.hidden {
+        display: none;
+      }
+
+      .signup-form div {
+        margin-bottom: 10px;
+      }
+
+      .signup-form input[type="radio"] {
+        margin-right: 5px;
+      }
+
+      .signup-form input[type="checkbox"] {
+        margin-right: 10px;
+      }
+
+      .signup-form label[for="agree"] {
+        font-size: 14px;
+      }
+
+      .signup-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      .signup-form button:hover {
+        background-color: #45a049;
+      }
+
+      .signup-form h3 {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 20px;
+      }
+
+      .signup-form div p {
+        font-size: 16px;
+        margin: 5px 0;
+      }
+
+      .signup-form div p span {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-form">
+      <h2>회원가입</h2>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="username">사용자 이름</label>
+          <input type="text" id="username" name="username" />
+          <span class="error-message"></span>
+        </div>
+        <div class="form-group">
+          <label for="email">이메일</label>
+          <input type="email" id="email" name="email" />
+          <span class="error-message"></span>
+        </div>
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <input type="password" id="password" name="password" />
+          <span class="error-message"></span>
+        </div>
+        <div class="form-group">
+          <label for="password2">비밀번호 확인</label>
+          <input type="password" id="password2" name="password2" />
+          <span class="error-message"></span>
+        </div>
+        <div>
+          <input type="radio" name="checkGender" checked /><span>남자</span>
+          <input type="radio" name="checkGender" /><span>여자</span>
+          <input type="radio" name="checkGender" /><span>기타</span>
+        </div>
+
+        <span id="infoAction">약관 확인 ></span>
+        <div id="info" class="hidden">
+          본 기관은 개인정보를 다음의 목적을 위해 처리합니다. 처리한 개인정보는
+          다음의 목적 이외의 용도로는 사용되지 않으며 이용 목적이 변경되는
+          경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등
+          필요한 조치를 이행할 예정입니다.
+        </div>
+
+        <div>
+          <input type="checkbox" id="agree" name="agree" />
+          <label for="agree">약관에 동의합니다.</label>
+        </div>
+        <button type="submit">회원가입</button>
+      </form>
+      <h3>회원가입 정보 확인</h3>
+      <div>
+        <p>사용자 이름: <span id="confirmUsername"></span></p>
+        <p>이메일: <span id="confirmEmail"></span></p>
+        <p>비밀번호: <span id="confirmPassword"></span></p>
+        <p>성별 : <span id="confirmGender"></span></p>
+      </div>
+    </div>
+  </body>
+</html>
