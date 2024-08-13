@@ -57,6 +57,8 @@ $(document).ready(function () {
     postElement.click(function () {
       // 이벤트함수 실행
       clickPost(post.id);
+      // this 선택자를 사용하여 클릭한 요소의 post-id값을 가져옴
+      clickPost($(this).attr("post-id"));
     });
     // 클래스 속성 삽입
     $(postElement).addClass("post-item");
