@@ -8,6 +8,7 @@
 ## 두번째
 
 1. 제목에 특정단어가 포함되어 있는 게시글만 보여주도록 검색버튼을 만들어 주세요.
+2. [배열 메서드](https://codingeverybody.kr/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-filter-%ED%95%A8%EC%88%98/)
 
 ## 세번째
 
