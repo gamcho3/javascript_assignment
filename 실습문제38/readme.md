@@ -4,7 +4,7 @@
 
 [theMealDB](https://www.themealdb.com/api.php)
 [pokeAPI](https://pokeapi.co/)
-[MarvelAPI](https://developer.marvel.com/)
+~~[MarvelAPI](https://developer.marvel.com/)~~
 
 ## 할일
 
