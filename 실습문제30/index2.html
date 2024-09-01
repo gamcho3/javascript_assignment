@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorite Color Picker</title>
+  </head>
+  <body>
+    <h1>배경색을 바꿔주세요</h1>
+    <input type="color" id="colorPicker" />
+    <button id="saveBtn">색 저장하기</button>
+    <button id="removeBtn">색 지우기</button>
+
+    <h2 id="message"></h2>
+
+    <script>
+      // 페이지 로드 시 로컬스토리지에서 색상 불러오기
+
+      addEventListener("DOMContentLoaded", (event) => {
+        const savedColor = localStorage.getItem("favoriteColor");
+        if (savedColor) {
+          document.body.style.backgroundColor = savedColor;
+          document.getElementById(
+            "message"
+          ).innerText = `선택한 배경색은 ${savedColor}`;
+        }
+      });
+
+      // 버튼 클릭 이벤트
+      // 색상 저장 함수
+      document.getElementById("saveBtn").addEventListener("click", () => {
+        const color = document.getElementById("colorPicker").value;
+        localStorage.setItem("favoriteColor", color);
+        document.body.style.backgroundColor = color;
+        document.getElementById(
+          "message"
+        ).innerText = `선택한 배경색은 ${color}`;
+      });
+
+      document.getElementById("removeBtn").addEventListener("click", () => {
+        localStorage.removeItem("favoriteColor");
+        document.body.style.backgroundColor = "";
+        document.getElementById("message").innerText = "";
+      });
+    </script>
+  </body>
+</html>
